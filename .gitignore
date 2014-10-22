@@ -85,3 +85,4 @@ GPATH
 gtags.files
 turbo*.dot
 turbo*.json
+/third_party/

@@ -5967,7 +5967,6 @@ Local<Promise> Promise::Catch(Handle<Function> handler) {
   return Local<Promise>::Cast(Utils::ToLocal(result));
 }
 
-
 Local<Promise> Promise::Then(Handle<Function> handler) {
   i::Handle<i::JSObject> promise = Utils::OpenHandle(this);
   i::Isolate* isolate = promise->GetIsolate();
@@ -6033,6 +6032,10 @@ size_t v8::ArrayBuffer::ByteLength() const {
   return static_cast<size_t>(obj->byte_length()->Number());
 }
 
+void *v8::ArrayBuffer::BaseAddress() {
+  i::Handle<i::JSArrayBuffer> obj = Utils::OpenHandle(this);
+  return obj->backing_store();
+}
 
 Local<ArrayBuffer> v8::ArrayBuffer::New(Isolate* isolate, size_t byte_length) {
   i::Isolate* i_isolate = reinterpret_cast<i::Isolate*>(isolate);

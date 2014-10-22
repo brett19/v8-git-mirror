@@ -2932,12 +2932,16 @@ class V8_EXPORT ArrayBuffer : public Object {
     friend class ArrayBuffer;
   };
 
-
   /**
    * Data length in bytes.
    */
   size_t ByteLength() const;
 
+  /**
+   * Pointer to underlying data.
+   */
+  void *BaseAddress();
+  
   /**
    * Create a new ArrayBuffer. Allocate |byte_length| bytes.
    * Allocated memory will be owned by a created ArrayBuffer and
